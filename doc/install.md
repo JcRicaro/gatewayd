@@ -1,6 +1,8 @@
 # Ripple Gateway Installation Instructions
 
-The following are for a clean build of Ubuntu 13.10. If you have any problems please create an issue.
+The following are for a clean build of Ubuntu 13.10 and Ubuntu 14.0.4. If you have any problems please create an issue.
+
+Before you start, make sure you have already installed [ripple-rest](https://github.com/ripple/ripple-rest).
 
 All of these commands assume your are in the base of the cloned project directory (e.g. ~/gatewayd).
 
@@ -15,7 +17,8 @@ All of these commands assume your are in the base of the cloned project director
 
 ### Install gatewayd's dependencies using NPM:
 
-    sudo npm install --global pg pm2 grunt grunt-cli forever db-migrate jshint
+    sudo npm install --global pg grunt grunt-cli forever db-migrate jshint
+    sudo npm install pm2 -g --unsafe-perm
     npm install --save
 
 ### Configure [Postgres](https://help.ubuntu.com/community/PostgreSQL)
@@ -28,7 +31,7 @@ Create the database and grant the created user as owner:
 
     sudo psql -U postgres -c "create database gatewayd_db with owner gatewayd_user encoding='utf8'"
 
-### Add to the created postgres credentials config/config.json.
+### Add to the created postgres credentials config/config.js.
 
     ...
     {
